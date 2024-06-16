@@ -19,8 +19,8 @@
         android:textSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView1"
         app:layout_constraintEnd_toEndOf="@+id/cardView1"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <ImageView
         android:id="@+id/imageView"

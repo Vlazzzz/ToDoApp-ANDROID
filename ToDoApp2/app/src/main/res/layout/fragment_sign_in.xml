@@ -18,9 +18,8 @@
         android:textSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView1"
         app:layout_constraintEnd_toEndOf="@+id/cardView1"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -142,11 +141,11 @@
         android:id="@+id/textview32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:text="Not registered?"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_marginLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
@@ -154,13 +153,13 @@
         android:id="@+id/btnSignUpRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="    Sign Up"
         android:textColor="@color/white"
-        android:textSize="16sp"
 
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textview32"
         app:layout_constraintTop_toTopOf="@+id/textview32" />
-
 
 
     <androidx.constraintlayout.widget.Guideline
