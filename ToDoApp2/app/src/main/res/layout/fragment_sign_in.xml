@@ -79,10 +79,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/white"
+                android:textColorHint="@color/grey"
+                android:fontFamily="@font/teko"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
                 android:hint="@string/enter_your_email"
                 android:inputType="textEmailAddress"
+                android:textColor="@color/black"
                 android:paddingStart="12dp"
-                android:paddingTop="15dp" />
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -116,10 +122,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
+                android:textColorHint="@color/grey"
                 android:hint="@string/enter_your_password"
+                android:textSize="25sp"
+                android:fontFamily="@font/teko"
+                android:textColor="@color/black"
                 android:inputType="textPassword"
                 android:paddingStart="12dp"
-                android:paddingTop="15dp" />
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,7 +156,8 @@
         android:layout_marginTop="12dp"
         android:text="Not registered?"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:fontFamily="@font/teko"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
@@ -156,8 +168,8 @@
         android:layout_marginStart="8dp"
         android:text="    Sign Up"
         android:textColor="@color/white"
-
-        android:textSize="16sp"
+        android:fontFamily="@font/teko"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textview32"
         app:layout_constraintTop_toTopOf="@+id/textview32" />
 
