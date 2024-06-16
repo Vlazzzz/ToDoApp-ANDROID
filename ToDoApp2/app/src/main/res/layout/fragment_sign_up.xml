@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/teko"
@@ -18,8 +19,7 @@
         android:textSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView1"
         app:layout_constraintEnd_toEndOf="@+id/cardView1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constrintBottom_toTopOf="@+id/cardView1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <ImageView
@@ -177,35 +177,31 @@
         android:src="@drawable/btn"
         app:layout_constraintEnd_toEndOf="@id/cardView3"
         app:layout_constraintTop_toBottomOf="@id/cardView3" />
-<!--
+
     <TextView
         android:id="@+id/textview32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/inter_regular"
-        android:text="Already Registered !!"
+        android:layout_marginLeft="30dp"
+        android:text="@string/already_registered"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/textViewSignIn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/nextBtn" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <TextView
-        android:id="@+id/textViewSignIn"
+        android:id="@+id/btnSignInRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_regular"
-        android:text=" Sign In"
-        android:textColor="@color/text_color"
+        android:text="    Sign In"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textview32"
-        app:layout_constraintTop_toTopOf="@id/textview32" />
 
-        -->
+        app:layout_constraintStart_toEndOf="@+id/textview32"
+        app:layout_constraintTop_toTopOf="@+id/textview32" />
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
