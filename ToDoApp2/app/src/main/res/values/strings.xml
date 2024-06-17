@@ -7,4 +7,5 @@
     <string name="re_enter_your_password">Re-enter your password</string>
     <string name="sign_in">Sign In</string>
     <string name="already_registered">Already registered?</string>
+    <string name="add_new_task">Add new task</string>
 </resources>

@@ -43,29 +43,33 @@ class SignUpFragment : Fragment() {
         binding.btnSignInRedirect.setOnClickListener {
             navControl.navigate(R.id.action_signUpFragment_to_signInFragment)
         }
-    binding.nextBtn.setOnClickListener {
-        val email = binding.emailEt.text.toString().trim()
-        val pass = binding.passEt.text.toString().trim()
-        val verifyPass = binding.verifyPassEt.text.toString().trim()
+        binding.nextBtn.setOnClickListener {
+            val email = binding.emailEt.text.toString().trim()
+            val pass = binding.passEt.text.toString().trim()
+            val verifyPass = binding.verifyPassEt.text.toString().trim()
 
-        if(!email.isEmpty() && !pass.isEmpty() && !verifyPass.isEmpty()) {
-            if(pass.equals(verifyPass)) {
-                auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                    if(it.isSuccessful) {
-                        Toast.makeText(context, "User created successfully", Toast.LENGTH_SHORT).show()
-                        navControl.navigate(R.id.action_signUpFragment_to_homeFragment)
-                    }
-                    else {
-                        Toast.makeText(context, "Error: ${it.exception?.message}", Toast.LENGTH_SHORT).show()
+            if (!email.isEmpty() && !pass.isEmpty() && !verifyPass.isEmpty()) {
+                if (pass.equals(verifyPass)) {
+                    binding.progressBar.visibility = View.VISIBLE
+                    auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(context, "User created successfully", Toast.LENGTH_SHORT)
+                                .show()
+                            navControl.navigate(R.id.action_signUpFragment_to_homeFragment)
+                        } else {
+                            Toast.makeText(
+                                context,
+                                "Error: ${it.exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        binding.progressBar.visibility = View.GONE
                     }
                 }
+            } else {
+                Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show()
             }
         }
-
-        else {
-            Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show()
-        }
-    }
     }
 
 }
