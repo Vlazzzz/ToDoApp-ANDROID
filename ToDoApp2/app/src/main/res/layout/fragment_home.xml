@@ -54,5 +54,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.76" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="252dp"
+        android:layout_height="265dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        tools:layout_editor_absoluteX="79dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
