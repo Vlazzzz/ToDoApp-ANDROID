@@ -109,7 +109,12 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     }
 
     override fun onDeleteTaskBtnClicked(toDoData: ToDoData) {
-        TODO("Not yet implemented")
+        databaseRef.child(toDoData.taskId).removeValue().addOnCompleteListener {
+            if(it.isSuccessful)
+                Toast.makeText(context, "Task Deleted Successfully", Toast.LENGTH_SHORT).show()
+            else
+                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onEditTaskBtnClicked(toDoData: ToDoData) {

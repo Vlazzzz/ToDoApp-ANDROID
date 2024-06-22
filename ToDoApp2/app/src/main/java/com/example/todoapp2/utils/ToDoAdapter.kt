@@ -13,12 +13,11 @@ class ToDoAdapter(private val list:MutableList<ToDoData>):
         this.listener = listener
     }
 
-    inner class ToDoViewHolder(binding:EachTodoItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ToDoViewHolder(val binding:EachTodoItemBinding): RecyclerView.ViewHolder(binding.root){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
-        val binding = EachTodoItemBinding.inflate(
-            LayoutInflater.from(parent.context),parent,false)
+        val binding = EachTodoItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
             return ToDoViewHolder(binding)
     }
 
@@ -30,7 +29,7 @@ class ToDoAdapter(private val list:MutableList<ToDoData>):
         with(holder){
             with(list[position]){
                 binding.todoTask.text=this.task
-                binding.deleteTask.SetOnClickListener{
+                binding.deleteTask.setOnClickListener{
                     listener?.onDeleteTaskBtnClicked(this)
                 }
                 binding.editTask.setOnClickListener{
