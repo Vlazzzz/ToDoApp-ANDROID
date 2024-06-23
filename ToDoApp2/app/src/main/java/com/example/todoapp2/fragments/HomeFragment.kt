@@ -28,7 +28,7 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     private lateinit var navControl: NavController
     private lateinit var databaseRef: DatabaseReference
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var popUpFragment: AddToDoPopupFragment
+    private var popUpFragment: AddToDoPopupFragment? = null
     private lateinit var adapter: ToDoAdapter
     private lateinit var mList:MutableList<ToDoData>
 
@@ -51,9 +51,12 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
 
     private fun registerEvents() {
         binding.addBtnHome.setOnClickListener {
+            if(popUpFragment != null)
+                childFragmentManager.beginTransaction().remove(popUpFragment!!).commit()
+
             popUpFragment = AddToDoPopupFragment()
-            popUpFragment.setListener(this)
-            popUpFragment.show(childFragmentManager, "AddToDoPopupFragment")
+            popUpFragment!!.setListener(this)
+            popUpFragment!!.show(childFragmentManager, AddToDoPopupFragment.TAG)
         }
     }
 
@@ -105,7 +108,22 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
             else
                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()
         }
-        popUpFragment.dismiss()
+        popUpFragment?.dismiss()
+    }
+
+    override fun onUpdateTask(todoData: ToDoData, todoEt: TextInputEditText) {
+        val map = HashMap<String, Any>()
+        map[todoData.taskId] = todoData.task
+        databaseRef.updateChildren(map).addOnCompleteListener {
+            if(it.isSuccessful) {
+                todoEt.text = null
+                Toast.makeText(context, "Task updated successfully", Toast.LENGTH_SHORT).show()
+            }
+            else
+                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()
+        }
+
+        popUpFragment?.dismiss()
     }
 
     override fun onDeleteTaskBtnClicked(toDoData: ToDoData) {
@@ -118,6 +136,12 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     }
 
     override fun onEditTaskBtnClicked(toDoData: ToDoData) {
-        TODO("Not yet implemented")
+        if(popUpFragment != null)
+            childFragmentManager.beginTransaction().remove(popUpFragment!!).commit()
+
+        popUpFragment = AddToDoPopupFragment.newInstance(toDoData.taskId, toDoData.task)
+        popUpFragment!!.setListener(this)
+        popUpFragment!!.show(childFragmentManager, AddToDoPopupFragment.TAG)
+
     }
 }
