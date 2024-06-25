@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,8 +22,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener,
-    ToDoAdapter.ToDoAdapterClicksInterface {
+class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener, ToDoAdapter.ToDoAdapterClicksInterface {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var navControl: NavController
@@ -58,6 +58,26 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
             popUpFragment!!.setListener(this)
             popUpFragment!!.show(childFragmentManager, AddToDoPopupFragment.TAG)
         }
+
+        // Logout button click listener
+        binding.logoutBtnHome.setOnClickListener {
+            showLogoutConfirmationDialog()
+        }
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Logout")
+        builder.setMessage("Are you sure you want to logout?")
+        builder.setPositiveButton("Yes") { dialog, _ ->
+            logout()
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 
     private fun init(view: View) {
@@ -97,6 +117,11 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
             }
 
         })
+    }
+
+    private fun logout() {
+        auth.signOut()
+        navControl.navigate(R.id.action_homeFragment_to_signInFragment)
     }
 
     override fun onSaveTask(todo: String, todoEt: TextInputEditText) {
@@ -142,6 +167,5 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
         popUpFragment = AddToDoPopupFragment.newInstance(toDoData.taskId, toDoData.task)
         popUpFragment!!.setListener(this)
         popUpFragment!!.show(childFragmentManager, AddToDoPopupFragment.TAG)
-
     }
 }
