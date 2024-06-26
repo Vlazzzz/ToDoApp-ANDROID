@@ -57,6 +57,14 @@ class SignUpFragment : Fragment() {
                     binding.progressBar.visibility = View.VISIBLE
                     auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
+                            // Save the user's email and password in SharedPreferences
+                            val sharedPreferences: SharedPreferences =
+                                requireContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+                            val editor = sharedPreferences.edit()
+                            editor.putString("user_email", email)
+                            editor.putString("user_password", pass)
+                            editor.apply()
+
                             Toast.makeText(context, "User created successfully", Toast.LENGTH_SHORT)
                                 .show()
                             navControl.navigate(R.id.action_signUpFragment_to_homeFragment)
