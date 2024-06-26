@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todoapp2.R
@@ -120,8 +121,12 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     }
 
     private fun logout() {
+
         auth.signOut()
-        navControl.navigate(R.id.action_homeFragment_to_signInFragment)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.signInFragment, true)
+            .build()
+        navControl.navigate(R.id.action_homeFragment_to_signInFragment, null, navOptions)
     }
 
     override fun onSaveTask(todo: String, todoEt: TextInputEditText) {

@@ -1,5 +1,6 @@
 package com.example.todoapp2.fragments
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -34,6 +35,18 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Inițializarea SharedPreferences
+        sharedPreferences = requireContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+
+        // Verificare dacă există date de autentificare salvate
+        val email = sharedPreferences.getString("user_email", null)
+        val password = sharedPreferences.getString("user_password", null)
+
+        if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
+            binding.emailEt.setText(email)
+            binding.passEt.setText(password)
+        }
+
         init(view)
         registerEvents()
     }
@@ -60,6 +73,13 @@ class SignInFragment : Fragment() {
                 binding.progressBar.visibility = View.VISIBLE
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if(it.isSuccessful) {
+
+                        // Salvarea datelor de autentificare în SharedPreferences
+                        val editor = sharedPreferences.edit()
+                        editor.putString("user_email", email)
+                        editor.putString("user_password", pass)
+                        editor.apply()
+
                         Toast.makeText(context, "User logged in successfully", Toast.LENGTH_SHORT).show()
                         navControl.navigate(R.id.action_signInFragment_to_homeFragment)
                     }
