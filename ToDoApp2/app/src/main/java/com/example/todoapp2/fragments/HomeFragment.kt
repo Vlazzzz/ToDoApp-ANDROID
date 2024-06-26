@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -121,10 +122,9 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     }
 
     private fun logout() {
-
         auth.signOut()
         val navOptions = NavOptions.Builder()
-            .setPopUpTo(R.id.signInFragment, true)
+            .setPopUpTo(R.id.nav_graph, true)
             .build()
         navControl.navigate(R.id.action_homeFragment_to_signInFragment, null, navOptions)
     }

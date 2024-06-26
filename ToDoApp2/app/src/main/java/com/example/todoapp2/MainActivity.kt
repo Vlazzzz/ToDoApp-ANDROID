@@ -17,4 +17,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true) // Move the task containing this activity to the back of the activity stack.
+    }
+
 }
