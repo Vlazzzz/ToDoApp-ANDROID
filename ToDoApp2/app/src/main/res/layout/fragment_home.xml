@@ -38,6 +38,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/triangleImageView"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/triangle_shape"
+        app:layout_constraintBottom_toTopOf="@+id/addBtnHome"
+        app:layout_constraintEnd_toEndOf="@+id/overlayView"
+        app:layout_constraintStart_toStartOf="@+id/overlayView" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="326dp"
