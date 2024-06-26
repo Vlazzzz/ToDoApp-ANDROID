@@ -18,7 +18,7 @@ class ToDoAdapter(private val list:MutableList<ToDoData>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
         val binding = EachTodoItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-            return ToDoViewHolder(binding)
+        return ToDoViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
