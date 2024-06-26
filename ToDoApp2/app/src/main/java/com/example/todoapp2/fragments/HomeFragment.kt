@@ -157,6 +157,22 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     }
 
     override fun onDeleteTaskBtnClicked(toDoData: ToDoData) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Delete Task")
+        builder.setMessage("Are you sure you want to delete this task?")
+        builder.setPositiveButton("Yes") { dialog, _ ->
+            deleteTask(toDoData)
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    private fun deleteTask(toDoData: ToDoData) {
         databaseRef.child(toDoData.taskId).removeValue().addOnCompleteListener {
             if(it.isSuccessful)
                 Toast.makeText(context, "Task Deleted Successfully", Toast.LENGTH_SHORT).show()
