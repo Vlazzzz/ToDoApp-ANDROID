@@ -221,7 +221,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/teko"
         android:text="    Sign In"
-        android:textColor="@color/white"
+        android:textColor="@drawable/singup_selector"
         android:textSize="20sp"
 
         app:layout_constraintStart_toEndOf="@+id/textview32"

@@ -178,7 +178,7 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/teko"
         android:text="    Sign Up"
-        android:textColor="@color/white"
+        android:textColor="@drawable/singup_selector"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textview32"
         app:layout_constraintTop_toTopOf="@+id/textview32" />
