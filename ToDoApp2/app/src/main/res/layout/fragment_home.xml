@@ -51,26 +51,25 @@
 
     <ImageView
         android:id="@+id/addBtnHome"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="49dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
         android:src="@drawable/addtask"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <ImageView
         android:id="@+id/logoutBtnHome"
-        android:layout_width="74dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="62dp"
+        android:layout_height="53dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="12dp"
         android:src="@drawable/logout_white"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.428" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
