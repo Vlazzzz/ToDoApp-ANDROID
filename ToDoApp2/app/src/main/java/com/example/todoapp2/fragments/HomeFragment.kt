@@ -54,11 +54,12 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     private fun registerEvents() {
         binding.addBtnHome.setOnClickListener {
             if(popUpFragment != null)
+                //daca exista un fragment de tip AddToDoPopupFragment, il eliminam
                 childFragmentManager.beginTransaction().remove(popUpFragment!!).commit()
 
             popUpFragment = AddToDoPopupFragment()
-            popUpFragment!!.setListener(this)
-            popUpFragment!!.show(childFragmentManager, AddToDoPopupFragment.TAG)
+            popUpFragment!!.setListener(this)//setam listener-ul pentru a putea comunica cu fragmentul
+            popUpFragment!!.show(childFragmentManager, AddToDoPopupFragment.TAG)//afisam fragmentul
         }
 
         // Logout button click listener
@@ -85,7 +86,6 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     private fun init(view: View) {
         navControl = Navigation.findNavController(view)
         auth = FirebaseAuth.getInstance()
-        // Get the reference of the Firebase database(Change with Room)
         databaseRef = FirebaseDatabase.getInstance().reference
             .child("Tasks").child(auth.currentUser?.uid.toString())
 
@@ -101,8 +101,8 @@ class HomeFragment : Fragment(), AddToDoPopupFragment.DialogNextBtnClickListener
     {
         databaseRef.addValueEventListener(object:ValueEventListener{
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                mList.clear()
+            override fun onDataChange(snapshot: DataSnapshot) {//snapshot este o copie a datelor din baza de date
+                mList.clear() //pentru a evita duplicarea datelor curatam lista
                 for(takeSnapshot in snapshot.children) {
                     val todoTask = takeSnapshot.key?.let {
                         ToDoData(it, takeSnapshot.value.toString())

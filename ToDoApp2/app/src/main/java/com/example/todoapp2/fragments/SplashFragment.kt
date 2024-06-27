@@ -28,7 +28,7 @@ class SplashFragment : Fragment() {
 
         init(view)
 
-        // show the splash screen for 4 seconds and then check if the user is logged in or not
+        // show the splash screen for 3 seconds and then check if the user is logged in or not
         view.postDelayed({
             if(auth.currentUser != null) {
                 navControl.navigate(R.id.action_splashFragment_to_homeFragment)
@@ -36,7 +36,7 @@ class SplashFragment : Fragment() {
             else {
                 navControl.navigate(R.id.action_splashFragment_to_signInFragment)
             }
-        }, 4000)
+        }, 3000)
     }
 
     private fun init(view: View) {

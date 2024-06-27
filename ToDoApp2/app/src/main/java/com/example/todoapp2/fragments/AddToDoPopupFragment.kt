@@ -22,17 +22,21 @@ class AddToDoPopupFragment : DialogFragment() {
         this.listener = listener
     }
 
+
+    //pentru a putea apela metoda newInstance fara a crea un obiect
+    // de tip AddToDoPopupFragment folosim companion object
     companion object {
         const val TAG = "AddToDoPopupFragment"
 
-        @JvmStatic
+        @JvmStatic //Anotarea indica faptul ca metoda nu este legata de un obiect specific
         fun newInstance(taskId:String, task:String) = AddToDoPopupFragment().apply {
-            arguments = Bundle().apply {
+            arguments = Bundle().apply {//Bundle este un container pentru date
                 putString("taskId", taskId)
                 putString("task", task)
             }
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,7 +46,7 @@ class AddToDoPopupFragment : DialogFragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //functie care se apeleaza dupa ce view-ul a fost creat
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null) {
             toDoData = ToDoData(arguments?.getString("taskId")!!, arguments?.getString("task")!!)
@@ -72,6 +76,8 @@ class AddToDoPopupFragment : DialogFragment() {
             dismiss()
         }
     }
+    //todoTask retine task-ul introdus de utilizator in campul de text
+    //toDoData retine task-ul si id-ul task-ului selectat
 
     interface DialogNextBtnClickListener {
         fun onSaveTask(todo : String, todoEt : TextInputEditText)
