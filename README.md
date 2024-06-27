@@ -1,9 +1,14 @@
-# ToDoApp - Documentație 📋
+# ToDoApp - 📋
 
 ---
 
-### Acces la GIT 🔗
-Proiectul este disponibil pe GIT: [ToDoApp-ANDROID](https://github.com/Vlazzzz/ToDoApp-ANDROID)
+### Introducere
+
+ToDoApp este o aplicație de gestionare a sarcinilor dezvoltată în Kotlin pentru platforma Android. Aplicația permite utilizatorilor să creeze, să vizualizeze și să gestioneze sarcini zilnice. Utilizează Firebase pentru autentificare și stocare a datelor, oferind o experiență de utilizare intuitivă și eficientă. 
+
+Datorită implementării SharedPreferences, aplicația păstrează utilizatorii autentificați chiar și după închiderea acesteia. 
+
+Interfața este prietenoasă și adaptată pentru diferite dimensiuni de ecran, iar utilizarea componentelor moderne precum RecyclerView și Navigation Component asigură o navigare fluidă și o gestionare eficientă a datelor.
 
 ---
 
